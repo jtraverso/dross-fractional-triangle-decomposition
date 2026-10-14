@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Dross's theorem on fractional triangle decompositions"
+  description: >-
+    A Lean 4 / Mathlib formalization of Dross's theorem: every finite graph on n vertices with
+    minimum degree at least 9n/10 has a fractional triangle decomposition, i.e. nonnegative real
+    weights on its triangles such that every edge lies in triangles of total weight exactly one.
+    The threshold 9/10 is the exact one of the paper. The proof follows the max-flow/min-cut
+    approach: the existence of the weights is reduced to a flow problem, a finite max-flow/min-cut
+    theorem (included) is applied, and every cut is bounded below by counting triangles and K4s,
+    with a peeling reduction for heavy triangles.
+  authors:
+    - "Juan Pablo Traverso Gianini"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan Pablo Traverso Gianini"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C70", "05C35"]
+
+sources:
+  - title: "Fractional Triangle Decompositions in Graphs with Large Minimum Degree"
+    authors:
+      - "François Dross"
+    id: "doi:10.1137/15M1014310"
+    type: "paper"
+    location: "SIAM Journal on Discrete Mathematics 30 (2016), no. 1, 36–42"
+    relationship: "formalizes"
+    note: "The main theorem (minimum degree at least 9n/10 implies a fractional triangle decomposition) is formalized at the exact threshold."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "LeanPool/lean-pool, projects DrossFractionalTriangleDecomposition (PR #573) and MaxFlowMinCut"
+    relationship: "builds-on"
+    note: >-
+      The same author's contributions to Lean Pool, ported from the frozen Lean development of the
+      author's Paper III (v1.4). The modules under LeanPool/ are copied from LeanPool/lean-pool at
+      commit 26ce45d3871e5560a8baffa4d49a8942b1d20a24 (without the generated aggregates
+      `Imports.lean`); only the copyright and author header lines were normalized to the
+      maintainer's name. Challenge.lean and Solution.lean were added for this submission.
+
+status:
+  scope: >-
+    Proved for every finite simple graph with decidable adjacency: minimum degree at least
+    9/10 of the number of vertices implies a fractional triangle decomposition with real weights.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "autonomous"
+      models: ["Aristotle (Harmonic)"]
+      framework: "Aristotle CLI"
+      tool_setup: >-
+        Produced Lean proofs of the development from the author's statements and proof plans
+        while it was built for the author's Paper III; the returns were audited and rebuilt.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only"
+      prompting_notes: "Formal statements and proof plans supplied by the author."
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code (Anthropic)"
+      tool_setup: >-
+        Port review and the Palomar packaging (Challenge with the copied definitions, Solution,
+        comparator configuration, metadata), checked with `lake build` and `#print axioms` (Lean
+        v4.35.0-rc3, Mathlib c55e6e786f49471c72fbddbec5415808896aec1e).
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "Natural-language instructions in Spanish, directed by the author."
+  spend_usd: "subscription-based"
+  notes: >-
+    The result and route were chosen by the human author; the Lean proofs are AI-generated and
+    mechanically verified (no `sorry`, axioms limited to propext, Classical.choice and
+    Quot.sound, identical elaborated types for the Challenge/Solution pair).
+
+fidelity:
+  divergences: >-
+    None in the statement. A fractional triangle decomposition is a function from vertex sets to
+    the reals, nonnegative, such that for every edge of G the sum of the weights of the triangles
+    of G (3-cliques) containing it equals one; weights on sets that are not triangles of G do not
+    enter the sums.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Opus 5.5 (AI agent in Claude Code, acting for the author)"
+  notes: >-
+    Agent review by Claude Opus 5.5, distinct from the mechanical verification: the agent compared
+    the Challenge statement with Dross's theorem (exact threshold 9/10, real weights, every edge
+    covered with total weight one), checked the copied definitions against the library, checked
+    that the vendored modules are the merged Lean Pool sources up to the normalized header lines,
+    and confirmed by `lake build`, `#print axioms` and a comparison of the fully elaborated
+    Challenge and Solution types that the proof uses no `sorry` and only propext,
+    Classical.choice and Quot.sound. The author directed the work and approved the statement. No
+    independent human mathematical review has been performed. The result is not new; no
+    mathematical novelty is claimed.
+
+alignment:
+  namespace: "DrossTriangle"
+  statements:
+    - source: "Dross (2016), main theorem"
+      lean: "DrossTriangle.dross_fractional_triangle_decomposition"
+      module: "Challenge"
+      status: "proved"
+      note: "Minimum degree at least 9n/10 implies a fractional triangle decomposition."
+
+acknowledgements: >-
+  Mathlib and the Lean community; Harmonic's Aristotle; Lean Pool.
