@@ -14,12 +14,51 @@ rev = "v4.35.0-rc3"
 
 [[lean_lib]]
 name = "LeanPool"
-globs = ["LeanPool.+"]
+roots = []
+globs = [
+  "LeanPool.DrossFractionalTriangleDecomposition",
+  "LeanPool.DrossFractionalTriangleDecomposition.Basic",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.Cancellation",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CancellationConfigs",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CompleteCase",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.Coverage",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CutBridges",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CutCapacity",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CutDensity",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.CutPartnerCount",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.DeficientCutExact",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.DenseBase",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.DoubleCount",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.DrossNetwork",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.EdgeCountBound",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.ExactCutBound",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.ExactFlow",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.ExactScalar",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.FlowSaturation",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.HighDegreeCount",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.K4Counting",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.K4PartnerCount",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.NoHeavyTriangle",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.PeelingDegree",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.PeelingGeometry",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.PeelingLift",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.SmallCase",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.TransferBound",
+  "LeanPool.DrossFractionalTriangleDecomposition.Internal.TriangleWeight",
+  "LeanPool.DrossFractionalTriangleDecomposition.Main",
+  "LeanPool.MaxFlowMinCut",
+]
 
 [[lean_lib]]
 name = "Challenge"
-roots = ["Challenge"]
+roots = []
+globs = [
+  "Challenge",
+]
 
 [[lean_lib]]
 name = "Solution"
-roots = ["Solution"]
+roots = []
+globs = [
+  "Solution",
+]
