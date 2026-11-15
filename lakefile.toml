@@ -1,4 +1,5 @@
 name = "dross"
+leanLibDir = "../../../../cdr-iii-shared-lean"
 version = "0.1.0"
 defaultTargets = ["LeanPool", "Challenge", "Solution"]
 requiresModuleSystem = true
